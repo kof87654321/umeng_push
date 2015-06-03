@@ -12,8 +12,13 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class UmengNotification {
+	
+	private static final Logger log = LoggerFactory.getLogger(UmengNotification.class);
+	
 	// This JSONObject is used for constructing the whole request string.
 	protected final JSONObject rootJson = new JSONObject();
 	
@@ -64,6 +69,7 @@ public abstract class UmengNotification {
         HttpResponse response = client.execute(post);
         int status = response.getStatusLine().getStatusCode();
         System.out.println("Response Code : " + status);
+        log.info("Response Code : " + status);  
         BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
         StringBuffer result = new StringBuffer();
         String line = "";
@@ -71,12 +77,15 @@ public abstract class UmengNotification {
             result.append(line);
         }
         System.out.println(result.toString());
+        log.info(result.toString());  
         if (status == 200) {
             System.out.println("Notification sent successfully.");
+            return true ;
         } else {
             System.out.println("Failed to send the notification!");
+            log.error(result.toString());
+            return false ;
         }
-        return true;
     }
 	
 	

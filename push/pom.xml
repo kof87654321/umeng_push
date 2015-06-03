@@ -4,17 +4,29 @@
   <artifactId>push</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+  <properties>
+	<slf4j.version>1.7.9</slf4j.version>
+  </properties>
+  
   <dependencies>
     <dependency>
-    <groupId>org.json</groupId>
-    <artifactId>json</artifactId>
-    <version>20090211</version>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20090211</version>
     </dependency>
     
     <dependency>
-    <groupId>org.apache.httpcomponents</groupId>
-    <artifactId>httpclient</artifactId>
-    <version>4.3.5</version>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.3.5</version>
     </dependency>
+    
+	<!-- SLF4J  -->
+	<dependency>  
+	    <groupId>org.slf4j</groupId>  
+	    <artifactId>slf4j-api</artifactId>  
+	    <version>${slf4j.version}</version>  
+	</dependency>  
+	<!-- SLF4J -->
   </dependencies>
 </project>
