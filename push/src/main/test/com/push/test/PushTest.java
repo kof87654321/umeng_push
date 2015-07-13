@@ -1,4 +1,4 @@
-package push.api;
+package com.push.test ;
 
 import java.util.Date;
 
@@ -9,7 +9,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import push.api.PushSettings;
+import push.api.PushTarget;
 import push.api.PushTarget.Query;
+import push.api.UmengAndroidApi;
+import push.api.UmengIosApi;
 
 public class PushTest {
 
