@@ -8,7 +8,7 @@ public class IOSBroadcast extends IOSNotification {
 			this.setPredefinedKeyValue("type", "broadcast");	
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.exit(1);
+			
 		}
 	}
 }

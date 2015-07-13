@@ -3,7 +3,6 @@ package push.android;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -17,27 +16,25 @@ public class AndroidFilecast extends AndroidNotification {
 			this.setPredefinedKeyValue("type", "filecast");	
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.exit(1);
+			
 		}
 	}
 	// Upload file with device_tokens to Umeng
 	public String uploadContents(String contents) throws Exception {
-		if (!rootJson.has("appkey") || !rootJson.has("timestamp")) {
-			throw new Exception("appkey, timestamp needs to be set.");
+		if (!rootJson.has("appkey") || !rootJson.has("timestamp") || !rootJson.has("validation_token")) {
+			throw new Exception("appkey, timestamp and validation_token needs to be set.");
 		}
 		// Construct the json string
 		JSONObject uploadJson = new JSONObject();
 		uploadJson.put("appkey", rootJson.getString("appkey"));
 		uploadJson.put("timestamp", rootJson.getString("timestamp"));
+		uploadJson.put("validation_token", rootJson.getString("validation_token"));
 		uploadJson.put("content", contents);
 		// Construct the request
 		String url = host + uploadPath;
-		String postBody = uploadJson.toString();
-		String sign = DigestUtils.md5Hex("POST" + url + postBody + appMasterSecret);
-		url = url + "?sign=" + sign;
 		HttpPost post = new HttpPost(url);
 		post.setHeader("User-Agent", USER_AGENT);
-		StringEntity se = new StringEntity(postBody, "UTF-8");
+		StringEntity se = new StringEntity(uploadJson.toString(), "UTF-8");
 		post.setEntity(se);
 		// Send the post request and get the response
 		HttpResponse response = client.execute(post);

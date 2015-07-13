@@ -8,7 +8,7 @@ public class AndroidUnicast extends AndroidNotification {
 			this.setPredefinedKeyValue("type", "unicast");	
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.exit(1);
+			
 		}
 	}
 }

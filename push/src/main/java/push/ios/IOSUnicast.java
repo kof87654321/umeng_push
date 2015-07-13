@@ -8,7 +8,7 @@ public class IOSUnicast extends IOSNotification {
 			this.setPredefinedKeyValue("type", "unicast");	
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.exit(1);
+			
 		}
 	}
 }

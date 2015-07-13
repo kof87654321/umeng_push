@@ -16,7 +16,7 @@ public class IOSCustomizedcast extends IOSNotification {
 			this.setPredefinedKeyValue("type", "customizedcast");	
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.exit(1);
+			
 		}
 	}
 	// Upload file with device_tokens or alias to Umeng

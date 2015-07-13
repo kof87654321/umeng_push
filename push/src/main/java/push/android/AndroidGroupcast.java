@@ -8,7 +8,7 @@ public class AndroidGroupcast extends AndroidNotification {
 			this.setPredefinedKeyValue("type", "groupcast");	
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.exit(1);
+			
 		}
 	}
 }

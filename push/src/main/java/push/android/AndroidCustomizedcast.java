@@ -16,7 +16,7 @@ public class AndroidCustomizedcast extends AndroidNotification {
 			this.setPredefinedKeyValue("type", "customizedcast");	
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.exit(1);
+			
 		}
 	}
 	
