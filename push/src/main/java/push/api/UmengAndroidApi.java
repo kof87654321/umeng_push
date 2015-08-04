@@ -3,6 +3,7 @@ package push.api;
 import java.util.Date;
 import java.util.Map;
 
+import push.PushResult;
 import push.api.PushParameters.Android.AfterOpen;
 import push.api.PushParameters.Android.DisplayType;
 
@@ -45,7 +46,7 @@ public class UmengAndroidApi {
 	 * 
 	 * @throws Exception
 	 */
-	public boolean sendGoApp(PushTarget target, String ticker, String title, String text, Map<String, String> extras, Date expireTime) throws Exception {
+	public PushResult sendGoApp(PushTarget target, String ticker, String title, String text, Map<String, String> extras, Date expireTime) throws Exception {
 		
 		AndroidNotificationBuilder builder = new AndroidNotificationBuilder(
 				PushSettings.ANDROID_APP_KEY, PushSettings.ANDROID_MASTER_SECRET, target, DisplayType.NOTIFICATION, ticker, title, text, AfterOpen.GO_APP);
@@ -71,7 +72,7 @@ public class UmengAndroidApi {
 	 * 
 	 * @throws Exception
 	 */
-	public boolean sendGoUrl (PushTarget target, String ticker, String title, String text, String url, Map<String, String> extras, Date expireTime) throws Exception {
+	public PushResult sendGoUrl (PushTarget target, String ticker, String title, String text, String url, Map<String, String> extras, Date expireTime) throws Exception {
 		
 		AndroidNotificationBuilder builder = new AndroidNotificationBuilder(
 				PushSettings.ANDROID_APP_KEY, PushSettings.ANDROID_MASTER_SECRET, target, DisplayType.NOTIFICATION, ticker, title, text);
@@ -97,7 +98,7 @@ public class UmengAndroidApi {
 	 * 
 	 * @throws Exception
 	 */
-	public boolean sendGoActivity (PushTarget target, String ticker, String title, String text, String activity, Map<String, String> extras, Date expireTime) throws Exception {
+	public PushResult sendGoActivity (PushTarget target, String ticker, String title, String text, String activity, Map<String, String> extras, Date expireTime) throws Exception {
 		
 		AndroidNotificationBuilder builder = new AndroidNotificationBuilder(
 				PushSettings.ANDROID_APP_KEY, PushSettings.ANDROID_MASTER_SECRET, target, DisplayType.NOTIFICATION, ticker, title, text);
@@ -124,7 +125,7 @@ public class UmengAndroidApi {
 	 * 
 	 * @throws Exception
 	 */
-	public boolean sendGoCustom (PushTarget target, String ticker, String title, String text, String custom, Date expireTime) throws Exception {
+	public PushResult sendGoCustom (PushTarget target, String ticker, String title, String text, String custom, Date expireTime) throws Exception {
 		
 		AndroidNotificationBuilder builder = new AndroidNotificationBuilder(
 				PushSettings.ANDROID_APP_KEY, PushSettings.ANDROID_MASTER_SECRET, target, DisplayType.MESSAGE, ticker, title, text);
@@ -146,7 +147,7 @@ public class UmengAndroidApi {
 	 * 
 	 * @throws Exception
 	 */
-	public boolean sendGoCustomMessage (PushTarget target, String custom, Date expireTime) throws Exception {
+	public PushResult sendGoCustomMessage (PushTarget target, String custom, Date expireTime) throws Exception {
 		
 		AndroidNotificationBuilder builder = new AndroidNotificationBuilder(
 				PushSettings.ANDROID_APP_KEY, PushSettings.ANDROID_MASTER_SECRET, target);

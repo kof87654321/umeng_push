@@ -3,6 +3,8 @@ package push.api;
 import java.util.Date;
 import java.util.Map;
 
+import push.PushResult;
+
 /**
  * IOS平台的push消息发送接口
  * 
@@ -37,7 +39,7 @@ public class UmengIosApi {
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean send (PushTarget target, String alert, Date expireTime) throws Exception {
+	public PushResult send (PushTarget target, String alert, Date expireTime) throws Exception {
 		
 		return send(target, alert, 0, null, expireTime);
 	}
@@ -54,7 +56,7 @@ public class UmengIosApi {
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean send (PushTarget target, String alert, int badge, Map<String, String> extras, Date expireTime) throws Exception {
+	public PushResult send (PushTarget target, String alert, int badge, Map<String, String> extras, Date expireTime) throws Exception {
 		
 		IosNotificationBuilder builder = new IosNotificationBuilder(PushSettings.IOS_APP_KEY, PushSettings.IOS_MASTER_SECRET, target, alert, badge);
 		

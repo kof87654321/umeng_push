@@ -50,8 +50,9 @@ public abstract class UmengNotification {
 	// refer to corresponding methods in the subclass.
 	public abstract boolean setPredefinedKeyValue(String key, Object value) throws Exception;
 	
-	public boolean send() throws Exception
+	public PushResult send() throws Exception
 	{
+		PushResult result = new PushResult();
 		String url = host + postPath;
 		HttpPost post = new HttpPost(url);
 		post.setHeader("User-Agent", USER_AGENT);
@@ -71,15 +72,18 @@ public abstract class UmengNotification {
 		String responseHtml = EntityUtils.toString(response.getEntity(), Charset.forName("utf-8"));
 		log.info(responseHtml);
 		log.info("PushSettings.isProduct:{}" , PushSettings.isProduct); 
+		result.setStatus(status); 
+		result.setResponseMessage(responseHtml);
 		if (status == 200)
 		{
 			log.info("Notification sent successfully."+ status +" responseHtml:" + responseHtml );
-			return true ;
+			result.setSuccess(true);
 		} else
 		{
 			log.warn("Failed to send the notification! status:"+ status +" responseHtml:" + responseHtml );
-			return false ;
+			result.setSuccess(false);
 		}
+		return result ;
 	}
 	
 	
